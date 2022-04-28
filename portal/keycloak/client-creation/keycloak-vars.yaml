@@ -1,5 +1,5 @@
-keycloak_url: "https://keycloak.kyle.gl00.net/auth" 
+keycloak_url: "http://keycloak.internal.kyle.gl00.net" 
 keycloak_client_id: internal-petstore
-portal_redirect_uris: ["https://portal.kyle.gl00.net/callback"]
-portal_namespace: default 
+portal_redirect_uris: ["https://portal.internal.kyle.gl00.net/callback"]
+portal_namespace: petstore
 realm: master

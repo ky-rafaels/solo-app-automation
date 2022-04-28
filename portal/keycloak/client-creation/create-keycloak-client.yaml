@@ -74,7 +74,7 @@
         state: present
         enabled: True
         validate_certs: false 
-      register: portal_client
+      # register: portal_client
       delegate_to: localhost
 
     - name: Apply secret to current k8s cluster context
@@ -88,4 +88,4 @@
             name: "{{ portal_namespace }}-portal-oidc-secret"
             namespace: "{{ portal_namespace }}" 
           data:
-            client_secret: "{{ client_secret.json.secret | b64encode }}"
+            client_secret: "{{ client_secret.json.registrationAccessToken | b64encode }}"

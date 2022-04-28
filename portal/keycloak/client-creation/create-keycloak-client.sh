@@ -1,1 +1,1 @@
-ansible-playbook ./create-keycloak-client.yaml 
+ansible-playbook -vv ./create-keycloak-client.yaml
