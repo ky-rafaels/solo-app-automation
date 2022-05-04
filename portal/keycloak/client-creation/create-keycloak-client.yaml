@@ -45,7 +45,7 @@
           authorization: "Bearer {{ admin_token.json.access_token }}"
           content-type: application/json
         status_code: [201, 200]
-      register: client_secret
+      register: access_token
 
     - name: Register Portal with Keycloak
       keycloak_client:
@@ -74,8 +74,19 @@
         state: present
         enabled: True
         validate_certs: false 
-      # register: portal_client
       delegate_to: localhost
+
+    - name: Get new client secret to be used by Portal
+      uri:
+        url: "{{ keycloak_url }}/admin/realms/{{ realm }}/clients/{{ access_token.json.id }}/client-secret"
+        method: POST
+        return_content: true
+        headers:
+          authorization: "Bearer {{ admin_token.json.access_token }}"
+          content-type: application/json
+        body_format: json 
+        validate_certs: false
+      register: client_secret 
 
     - name: Apply secret to current k8s cluster context
       kubernetes.core.k8s:
@@ -88,4 +99,4 @@
             name: "{{ portal_namespace }}-portal-oidc-secret"
             namespace: "{{ portal_namespace }}" 
           data:
-            client_secret: "{{ client_secret.json.registrationAccessToken | b64encode }}"
+            client_secret: "{{ client_secret.json.value | b64encode }}"
