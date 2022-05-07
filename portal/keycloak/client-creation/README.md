@@ -15,7 +15,7 @@ The shell script in this repo calls the "create-keycloak-client.yaml" playbook. 
 
 2. Define variables
 ```bash
-$ cat > keycloak-vars.yaml <<EOF
+$ cat > vars.yaml <<EOF
 keycloak_url: "https://keycloak.example.com:8080/auth" 
 keycloak_client_id: test-client
 portal_redirect_uris: ["https://portal.mycompany.corp/callback", "http://portal.mycompany.corp/callback"]
