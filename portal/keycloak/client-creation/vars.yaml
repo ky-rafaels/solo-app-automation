@@ -1,5 +1,11 @@
 keycloak_url: "http://keycloak.internal.kyle.gl00.net" 
-keycloak_client_id: test-client 
 portal_redirect_uris: ["https://portal.internal.kyle.gl00.net/callback"]
+
+# Client name to create in Keycloak
+keycloak_client_id: test-client 
+
+# Namespace where developer portal has been created
 portal_namespace: default
+
+# Realm to create client under. Realm needs to already exist in Keycloak
 realm: master
