@@ -1,5 +1,5 @@
 keycloak_url: "http://keycloak.internal.kyle.gl00.net" 
-portal_redirect_uris: ["https://portal.internal.kyle.gl00.net/callback"]
+portal_redirect_uris: ["https://portal.internal.kyle.gl00.net/callback", "http://portal.internal.kyle.gl00.net/callback"]
 
 # Client name to create in Keycloak
 keycloak_client_id: test-client 
